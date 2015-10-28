@@ -1,0 +1,21 @@
+{
+  "name": "Gym-Hero",
+  "version": "0.0.0",
+  "authors": [
+    "TommyCakes <tomhwarhurst@aol.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.6",
+    "angular-materialize": "*",
+    "angular-ui-router": "~0.2.15",
+    "angularfire": "~1.1.2",
+  }
+}

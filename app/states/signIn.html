@@ -1,0 +1,16 @@
+<div class="container">
+<div id="circle" ng-class="{ 'animated infinite bounce' : app.loading}" >
+  <h5 ng-hide="app.loading" id="greeting">Welcome to Gym Hero!</h5>
+  <h5 ng-if="app.loading" id="greeting">Signing In ...</h5>
+  <img src="app/Logo.png" alt="">
+  </div>
+</div>
+
+<div id="sign-in" class="container">
+ <h6>SIGN IN</h6>
+  </div>
+
+<ul class="collection" id="authentication">
+      <li ng-click="app.login()" class="collection-item"><i class="fa fa-twitter"></i>TWITTER</li>
+      <li class="collection-item"><i class="fa fa-facebook"></i>FACEBOOK</li>
+    </ul>

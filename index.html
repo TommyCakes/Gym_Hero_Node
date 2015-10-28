@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="workoutApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gym-Hero</title>
+ <link type="text/css" rel="stylesheet" href="app/css/materialize.min.css"  media="screen,projection"/>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css">
+<link rel="stylesheet" href="app/css/animate.css">
+<link rel="stylesheet" href="app/css/style.css">
+
+
+
+
+</head>
+<body ng-controller="HomeCtrl as app">
+
+<nav>
+  <div class="nav-wrapper container">
+    <a ng-if="app.user" ui-sref="home" class="brand-logo center-text" id="brand">Gym Hero</a>
+    <a ng-if="!app.user" ui-sref="signIn" class="brand-logo center-text">Gym Hero</a>
+
+    <ul id="nav-mobile" class="left">
+      <li>
+        <a ng-if="!app.user" ui-sref="signIn" class="center text ">
+        <i id="lock" class="tiny material-icons left text">lock_outline</i>
+        LOG IN
+      </a>
+      </li>
+      <li>
+        <a ng-if="app.user" ui-sref="signIn" class="center text" ui-sref="#" ng-click="app.logout()">
+          <i id="lock" class="tiny material-icons left text">lock_open</i>
+          LOG OUT
+        </a>
+      </li>
+    </ul>
+
+      <ul id="settings" class="right">
+            <li>
+            <a ng-if="app.user" ui-sref="newUser">
+            <i class="tiny material-icons right text">perm_identity</i>
+            </a>
+            <a ng-if="!app.user" ui-sref="signIn">
+            <i class="tiny material-icons right text">perm_identity</i>
+            </a>
+        </li>
+        </ul>
+  </div>
+</nav>
+
+
+ <div id="app-views" ui-view></div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-animate.js"></script>
+<script src="bower_components/angular-materialize/src/angular-materialize.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
+<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angularfire/dist/angularfire.js"></script>
+<script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.2.js"></script>
+
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="app/app.js"></script>
+<script src="app/services/authentication.js"></script>
+<script src="app/services/records.js"></script>
+<script src="app/controllers/home.controller.js"></script>
+<script src="app/controllers/movement.controller.js"></script>
+<script src="app/controllers/history.controller.js"></script>
+<script src="app/controllers/newUser.controller.js"></script>
+<script src="app/directives/ratings.js"></script>
+<script src="app/directives/tweets.js"></script>
+
+</body>
+</html>
