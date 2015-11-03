@@ -2,7 +2,7 @@
 
 
 angular.module('workoutApp')
-.controller('MoveCtrl', function($firebaseObject, $firebaseArray, firebaseUrl, $stateParams, Auth, Records) {
+.controller('MoveCtrl', function($firebaseObject, $firebaseArray, firebaseUrl, $stateParams, Auth, Records, $http) {
   var self = this;
   this.muscles = $stateParams.muscles
   console.log(self.muscles)
@@ -186,4 +186,15 @@ angular.module('workoutApp')
 
       this.userWorkout=[ ];
     };
+  this.backend = function() {
+    var workout = [{
+      mood: 'happy',
+      weight: 12,
+      reps: 3,
+      sets: 4,
+      name: "Bench Press"
+    }]
+    $http.post('http://127.0.0.1:3000/api/workouts/3833019681', workout)
+
+  }
 })
