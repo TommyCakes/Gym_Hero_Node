@@ -1,31 +1,60 @@
+var Logs = require('../models/logs');
 var Workout = require('../models/workout');
-var Movement = require('../models/movement');
 var User = require('../models/users');
-var express = require('express');
-var router = express.Router();
 
-router.post('/workouts/:id', function(req, res) {
+module.exports = function(app){
+  app.route('/api/workouts/:id')
+    .options(function (req, res, next) {
+          res.sendStatus(200).end();
+          next();
+      })
+    .post(function(req, res) {
 
-  User.findOne({uid: req.params.id},function(err, user){
-    if (user) {
       var newWorkout = new Workout({
-                        date: Date.now(),
-                        exercises: []
+        date: Date.now(),
       })
       var currentWorkout = req.body;
           currentWorkout.forEach(function(val, index) {
-            var movement = new Movement({
-                          mood: val.mood,
-                          name: val.name,
-                          reps: val.reps,
-                          sets: val.sets,
-                          weight: val.weight,
-            })
+            var movement = {
+              mood: val.mood,
+              name: val.name,
+              reps: val.reps,
+              sets: val.sets,
+              weight: val.weight
+            }
             newWorkout.exercises.push(movement)
-          })
-      user.update({$push: {workouts: newWorkout }})
-    }
-  })
-});
+        });
 
-module.exports = router;
+      var userID = req.params.id ? {user: req.params.id} : {user:{"$exists":false}};
+
+    Logs.findOne(userID, function(err, logs, next){
+      if(!logs){
+        var newLogs = new Logs({
+          user: req.params.id,
+          workouts: [newWorkout]
+        });
+
+        newLogs.save(function(err, workout){
+          if (err) {
+            throw err
+          }
+            res.json(currentWorkout)
+            next(null, workout);
+          });
+        }
+          else {
+            logs.workouts.push(newWorkout);
+
+            res.json(newWorkout)
+          }
+        }
+      )
+      })
+      .get(function(req,res){
+        Logs.findOne({user: req.params.id}, function(err, logs){
+          if(err) handleError(err)
+
+          res.json(logs)
+        })
+  });
+}

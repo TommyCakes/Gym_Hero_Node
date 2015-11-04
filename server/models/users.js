@@ -5,8 +5,7 @@ var userSchema = mongoose.Schema({
     displayName: String,
     picture: String,
     email: String,
-    workouts: [{type: mongoose.Schema.Types.ObjectId,
-                  ref: 'Workout'}]
+    workouts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Workout'}]
 });
 
 var User = mongoose.model('User', userSchema);

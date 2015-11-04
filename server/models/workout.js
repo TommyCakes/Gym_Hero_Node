@@ -1,14 +1,17 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var workoutSchema = new Schema({
-        date: Date,
-        exercises: [{ type: Schema.Types.ObjectId,
-                      ref: 'Movement'
-                    }]
-
+var workoutsSchema = new Schema({
+    date: Date,
+    exercises: [{
+      reps: String,
+      weight: String,
+      sets: String,
+      mood: String,
+      name: String
+    }]
 })
 
 
-var Workout = mongoose.model('Workout', workoutSchema);
-module.exports = Workout;
+var Workouts = mongoose.model('Workouts', workoutsSchema);
+module.exports = Workouts;
