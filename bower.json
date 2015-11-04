@@ -16,6 +16,6 @@
     "angular": "~1.4.6",
     "angular-materialize": "*",
     "angular-ui-router": "~0.2.15",
-    "angularfire": "~1.1.2",
+    "angularfire": "~1.1.2"
   }
 }

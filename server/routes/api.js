@@ -7,7 +7,7 @@ module.exports = function(app){
     .options(function (req, res, next) {
           res.sendStatus(200).end();
           next();
-      })
+    })
     .post(function(req, res) {
 
       var newWorkout = new Workout({
@@ -41,12 +41,12 @@ module.exports = function(app){
             res.json(currentWorkout)
             next(null, workout);
           });
-        }
+        } // if
           else {
             logs.workouts.push(newWorkout);
 
             res.json(newWorkout)
-          }
+          } // else
         }
       )
       })

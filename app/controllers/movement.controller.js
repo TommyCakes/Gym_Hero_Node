@@ -194,7 +194,13 @@ angular.module('workoutApp')
       sets: 4,
       name: "Bench Press"
     }]
-    $http.post('http://127.0.0.1:3000/api/workouts/3833019681', workout)
-
+    $http.post('http://127.0.0.1:3000/api/workouts/364986886', workout).then(function(results){
+      console.log(results)
+    })
   }
+
+  $http.get('http://127.0.0.1:3000/api/workouts/364986886').then(function(results){
+    console.log(results)
+    self.awesome = results.data.workouts;
+  })
 })
